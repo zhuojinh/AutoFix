@@ -1,0 +1,25 @@
+.card {
+    padding: 0;
+}
+
+.card img{
+    width: 100%;
+}
+
+.card .card-body{
+    padding: 9px;
+}
+
+.deleteForm{
+    display: inline;
+}
+
+.checked {
+    color: orange;
+}
+
+/* Google Maps */
+#map {
+    height: 400px;
+    width: 100%;
+}
