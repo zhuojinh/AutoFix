@@ -11,12 +11,12 @@ var LocalStrategy = require("passport-local");
 var methodOverride = require("method-override");
 
 var Comment = require("./models/comment");
-var Campground = require("./models/campground");
+var Shop = require("./models/shop");
 var User = require("./models/user");
 
 var commentRoutes = require("./routes/comments");
 var reviewRoutes = require("./routes/reviews");
-var campgroundRoutes = require("./routes/campgrounds");
+var shopRoutes = require("./routes/shops");
 var indexRoutes = require("./routes/index");
 
 //mongoose configuration
@@ -56,9 +56,9 @@ app.use(function(req, res, next){
 
 //use routes
 app.use(indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
-app.use("/campgrounds/:id/reviews", reviewRoutes);
+app.use("/shops", shopRoutes);
+app.use("/shops/:id/comments", commentRoutes);
+app.use("/shops/:id/reviews", reviewRoutes);
 
 app.listen(80,function(){
     console.log("The AutoFix Server has started!");

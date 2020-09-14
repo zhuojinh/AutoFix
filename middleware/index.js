@@ -1,17 +1,17 @@
-var Campground = require("../models/campground");
+var Shop = require("../models/shop");
 var Comment = require("../models/comment");
 var Review = require("../models/review");
 
 var middlewareObj = {};
 
-middlewareObj.checkCampgroundOwnership = function(req, res, next) {
+middlewareObj.checkShopOwnership = function(req, res, next) {
     if(req.isAuthenticated()){
-        Campground.findById(req.params.id, function(err, foundCampground){
-            if(err || !foundCampground){
-                req.flash("error", "Campground Not Found");
+        Shop.findById(req.params.id, function(err, foundShop){
+            if(err || !foundShop){
+                req.flash("error", "Shop Not Found");
                 res.redirect("back");
             } else {
-                if(foundCampground.author.id.equals(req.user._id)){
+                if(foundShop.author.id.equals(req.user._id)){
                     next();
                 } else {
                     req.flash("error", "Permission Denied!");
@@ -77,18 +77,18 @@ middlewareObj.checkReviewOwnership = function(req, res, next) {
 
 middlewareObj.checkReviewExistence = function (req, res, next) {
     if (req.isAuthenticated()) {
-        Campground.findById(req.params.id).populate("reviews").exec(function (err, foundCampground) {
-            if (err || !foundCampground) {
-                req.flash("error", "Campground not found.");
+        Shop.findById(req.params.id).populate("reviews").exec(function (err, foundShop) {
+            if (err || !foundShop) {
+                req.flash("error", "Shop not found.");
                 res.redirect("back");
             } else {
-                // check if req.user._id exists in foundCampground.reviews
-                var foundUserReview = foundCampground.reviews.some(function (review) {
+                // check if req.user._id exists in foundShop.reviews
+                var foundUserReview = foundShop.reviews.some(function (review) {
                     return review.author.id.equals(req.user._id);
                 });
                 if (foundUserReview) {
                     req.flash("error", "You already wrote a review.");
-                    return res.redirect("/campgrounds/" + foundCampground._id);
+                    return res.redirect("/shops/" + foundShop._id);
                 }
                 // if the review was not found, go to the next middleware
                 next();

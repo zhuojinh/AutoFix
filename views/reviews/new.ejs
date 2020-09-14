@@ -2,9 +2,9 @@
 
 <div class="container">
     <div class="row">
-        <h1 style="text-align: center">New Review: <%= campground.name %></h1>
+        <h1 style="text-align: center">New Review: <%= shop.name %></h1>
         <div style="width: 30%; margin: 25px auto;">
-            <form action="/campgrounds/<%= campground._id %>/reviews" method="POST">
+            <form action="/shops/<%= shop._id %>/reviews" method="POST">
                 <div class="form-group">
                     <label for="rating">Leave a rating:</label>
                     <fieldset class="starability-basic form-group" id="rating">
@@ -42,13 +42,13 @@
                     </fieldset>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" type="text" name="review[text]" placeholder="Write a review for this campground..." rows="5"></textarea>
+                    <textarea class="form-control" type="text" name="review[text]" placeholder="Write a review for this shop..." rows="5"></textarea>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block">Submit a Review</button>
                 </div>
             </form>
-            <a href="/campgrounds/<%= campground._id %>">Go Back</a>
+            <a href="/shops/<%= shop._id %>">Go Back</a>
         </div>
     </div>
 </div>

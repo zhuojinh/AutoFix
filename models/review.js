@@ -21,9 +21,9 @@ var reviewSchema = new mongoose.Schema({
         },
         username: String
     },
-    campground: {
+    shop: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Campground"
+        ref: "Shop"
     }
 }, {
     timestamps: true

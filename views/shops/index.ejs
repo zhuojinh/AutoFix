@@ -1,0 +1,45 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="container-fluid text-center">
+            <h1>Welcome to AutoFix!</h1>
+            <p>View our most professional car repair shops around you!</p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/shops/new" role="button">Add New Shop</a>
+            </p>  
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12 mb-2">
+            <h3>Our Most Popular Shop</h3>
+        </div>
+        <% shops.forEach(function(shop){ %>
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card">
+                    <img src="<%= shop.image %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><%= shop.name %></h5>
+                        <div class="card-subtitle mb-2 text-center">
+                            <% if (shop.rating === 0) { %>
+                            <em>No reviews yet.</em>
+                            <% } else { %>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star <% if (shop.rating > 1.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (shop.rating > 2.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (shop.rating > 3.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (shop.rating > 4.5) { %> checked <% } %>"></span>
+                            <% } %>
+                        </div>
+			<div class="text-center">
+                        	<a href="/shops/<%= shop._id %>" class="btn btn-outline-success">More Info</a>
+                	</div>    
+		    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>

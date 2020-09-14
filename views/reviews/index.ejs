@@ -3,32 +3,32 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 style="text-align: center">Review Page: <%= campground.name %></h1>
-            <a href="/campgrounds/<%= campground._id %>">Go back to the campground page</a>
+            <h1 style="text-align: center">Review Page: <%= shop.name %></h1>
+            <a href="/shops/<%= shop._id %>">Go back to the shop page</a>
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
-                        <% if (campground.rating === 0) { %>
+                        <% if (shop.rating === 0) { %>
                         <h5>
                             <em>No reviews yet.</em>
                         </h5>
                         <% } else { %>
                         <p>
                             <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
-                            <span class="fa fa-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
-                            <span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
-                            <span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
-                            <em>(total reviews: <%= campground.reviews.length %>)</em>
+                            <span class="fa fa-star <% if (shop.rating > 1.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (shop.rating > 2.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (shop.rating > 3.5) { %> checked <% } %>"></span>
+                            <span class="fa fa-star <% if (shop.rating > 4.5) { %> checked <% } %>"></span>
+                            <em>(total reviews: <%= shop.reviews.length %>)</em>
                         </p>
                         <p>
-                            Current campground rating: <strong><%= campground.rating.toFixed(2) %></strong>
+                            Current shop rating: <strong><%= shop.rating.toFixed(2) %></strong>
                         </p>
-                        <p><h4>All reviews for this campground:</h4></p>
+                        <p><h4>All reviews for this shop:</h4></p>
                         <hr style="margin-top: 0;">
                     </div>
                     <div clas"card-text">
-                        <% campground.reviews.forEach(function(review){ %>
+                        <% shop.reviews.forEach(function(review){ %>
                             <div class="row">
                                 <div class="col-md-3">
                                     <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %><%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
@@ -40,8 +40,8 @@
                                         <%= review.text %>
                                     </p>
                                     <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
-                                    <a class="btn btn-xs btn-warning" href="/campgrounds/<%=campground._id %>/reviews/<%=review._id %>/edit">Edit</a>
-                                    <form id="delete-form" action="/campgrounds/<%=campground._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
+                                    <a class="btn btn-xs btn-warning" href="/shops/<%=shop._id %>/reviews/<%=review._id %>/edit">Edit</a>
+                                    <form id="delete-form" action="/shops/<%=shop._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
                                         <input type="submit" class="btn btn-xs btn-danger" value="Delete">
                                     </form>
                                     <% } %>
@@ -51,11 +51,11 @@
                             <% }); %>
                             <% } %>
                             <div>
-                                <a class="btn btn-primary <% if (currentUser && campground.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>" href="/campgrounds/<%= campground._id %>/reviews/new">
+                                <a class="btn btn-primary <% if (currentUser && shop.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>" href="/shops/<%= shop._id %>/reviews/new">
                                     Write a New Review</a>
                             </div>
                             <div style="margin-top: 10px;">
-                                <a class="btn btn-default" href="/campgrounds/<%= campground._id %>"><i class="fa fa-arrow-left"></i> Go back</a>
+                                <a class="btn btn-default" href="/shops/<%= shop._id %>"><i class="fa fa-arrow-left"></i> Go back</a>
                             </div>
                     </div>
                 </div>
