@@ -4,7 +4,7 @@ var passport = require("passport");
 var User = require("../models/user");
 
 router.get("/", function(req, res){
-    res.render("landing");
+    res.redirect("/shops");
 });
 
 router.get("/register", function(req, res){

@@ -26,7 +26,6 @@ router.get("/", function(req, res){
 
 router.post("/", middleware.isLoggedIn, function(req,res){
     var name = req.body.name;
-    var price = req.body.price;
     var image = req.body.image;
     var dsc = req.body.description;
     var author = {
@@ -41,7 +40,7 @@ router.post("/", middleware.isLoggedIn, function(req,res){
     var lat = data[0].latitude;
     var lng = data[0].longitude;
     var location = data[0].formattedAddress;
-    var newShop = {name: name, price: price, image: image, description: dsc, author: author, location: location, lat: lat, lng: lng};
+    var newShop = {name: name, image: image, description: dsc, author: author, location: location, lat: lat, lng: lng};
     Shop.create(newShop, function(err, newlyCreated){
         if(err){
             console.log(err);

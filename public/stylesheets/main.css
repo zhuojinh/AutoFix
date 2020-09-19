@@ -23,3 +23,34 @@
     height: 400px;
     width: 100%;
 }
+
+.jumbotron{
+    position: relative;
+}
+
+.jumbotron::before {    
+    content: "";
+    background-image: url('https://images.unsplash.com/photo-1557087413-5b2a972b011a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.85;
+}
+
+.jumbotron h1{
+    position: relative;
+    color: #ffffff; 
+}
+
+.jumbotron h4{
+    position: relative;
+    color: #ffffff; 
+}
+
+.jumbotron p{
+    position: relative;
+}
